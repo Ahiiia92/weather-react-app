@@ -34,17 +34,19 @@ class App extends Component {
             </div>
             <div className="temperature">25°C</div>
           </div>
-          <div id="forecast">
-            <div className="forecast-icon"></div>
-            <div className="today-weather">
-              <h3>SOLEIL</h3>
-              <div className="search-box"></div>
-              <ul className="forecast-results">
-                <li>temp</li>
-                <li>hum</li>
-                <li>visibility</li>
-              </ul>
+        </div>
+        <div id="forecast">
+          <div className="forecast-icon"></div>
+          <div className="today-weather">
+            <h3>SOLEIL</h3>
+            <div className="search-box">
+              SEARCH BOX HERE
             </div>
+            <ul className="forecast-results">
+              <li>temp</li>
+              <li>hum</li>
+              <li>visibility</li>
+            </ul>
           </div>
         </div>
       </div>

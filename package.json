@@ -31,7 +31,8 @@
     "react": "16.2",
     "react-animated-weather": "^4.0.1",
     "react-dom": "16.2",
-    "react-live-clock": "^4.0.5"
+    "react-live-clock": "^4.0.5",
+    "react-open-weather": "^0.6.2"
   },
   "scripts": {
     "start": "webpack-dev-server --mode development",

@@ -1,5 +1,10 @@
+@import './components/cards';
+@import './components/forecast';
+@import './components/location';
+
 body {
   font-family: Helvetica;
+  background-image: url('https://images.pexels.com/photos/1028600/pexels-photo-1028600.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260');
 }
 
 #root {

@@ -2,17 +2,21 @@ import React, { Component } from 'react';
 import ReactWeather from 'react-open-weather';
 
 // import './currentLocation';
-import apiKeys from '../apiKeys';
 import SearchBar from './search_bar';
-import Location from './currentLocation';
+import WeatherLocation from './currentLocation';
+
+const api = {
+  key: "1e6eb1521c14c5ae5a3ec388a513e4fb",
+  base: "https://api.openweathermap.org/data/2.5/"
+}
 
 const api_key = process.env.OPENWEATHER_API_KEY
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      lat: "lat",
-      lon: "lon",
+      lat: "49.2827",
+      lon: "123.1207",
       city: "Vancouver",
       temperatureC: "25°C",
       humidity: "75%",
@@ -20,86 +24,49 @@ class App extends Component {
     };
   }
 
-  componentDidMount() {
-    const weatherURL =
-      `http://api.openweathermap.org/data/2.5/forecast?zip=11102&units=imperial&APPID=1e6eb1521c14c5ae5a3ec388a513e4fb`
-
-    fetch(weatherURL)
-      .then(res => res.json())
-      .then(data => {
-        const dailyData = data.list.filter(reading => reading.dt_txt.includes("18:00:00"))
-        this.setState({
-          fullData: data.list,
-          dailyData: dailyData
-        }, () => console.log(this.state))
-      })
-
-    // getWeather = async (lat, lon) => {
-    //   const api_call = await fetch(
-    //     `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&APPID=${api_key}`
-    //   );
-    //   const data = await api_call.json();
-    //   this.setState({
-    //     lat: lat,
-    //     lon: lon,
-    //     city: data.name,
-    //     temperatureC: Math.round(data.main.temp),
-    //     humidity: data.main.humidity,
-    //     country: data.sys.country,
-    //   });
-    // };
+  search = (query) => {
+    console.log(query);
   }
 
-  // search = (city) => {
-  //   axios
-  //     .get(
-  //       `${apiKeys.base}weather?q=${
-  //       city != "[object Object]" ? city : query
-  //       }&units=metric&APPID=${apiKeys.key}`
-  //     )
-  //     .then((response) => {
-  //       setWeather(response.data);
-  //       setQuery("");
-  //     })
-  //     .catch(function (error) {
-  //       console.log(error);
-  //       setWeather("");
-  //       setQuery("");
-  //       setError({ message: "Not Found", query: query });
-  //     });
-  // };
+  dateBuilder = (d) => {
+    let days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
+    let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+
+    let day = days[d.getDay()];
+    let date = d.getDate();
+    let month = months[d.getMonth()];
+    let year = d.getUTCFullYear();
+
+    return `${day} ${date} ${month} ${year}`;
+  };
 
   render() {
     return (
       <div className="container">
         <div id="location">
           <div className="title">
-            <h2>CITY</h2>
-            <p>COUNTRY</p>
+            <h2>{this.state.city}</h2>
+            <p>{this.state.country}</p>
           </div>
           <div className="date-time">
             <div className="day">
-              <div className="date"> Mercredi blabla</div>
+              <div className="date">{this.dateBuilder(new Date())}</div>
               <div className="time">13:30</div>
             </div>
-            <div className="temperature">25°C</div>
+            <div className="temperature">{this.state.temperatureC}</div>
           </div>
         </div>
         <div id="forecast">
           <div className="forecast-icon"></div>
           <div className="today-weather">
-            <ReactWeather
-              forecast="today"
-              apikey="1e6eb1521c14c5ae5a3ec388a513e4fb"
-              type="city"
-              city="Berlin"
-            />
-            <h3>SOLEIL</h3>
+            <h3 className="weather">SOLEIL</h3>
             <div className="search-box">
               <SearchBar searchFunction={this.search} />
-              <SearchBar getWeather={this.getWeather} />
             </div>
-            <Location />
+              <WeatherLocation
+                temperatureC={this.state.temperatureC}
+                humidity={this.state.humidity}
+              />
           </div>
         </div>
       </div>

@@ -10,7 +10,7 @@ class SearchBar extends Component {
     return (
       <input
         type="text"
-        className="search-bar form-control form-search"
+        className="search-bar"
         placeholder="Search any city"
         onChange={this.handleUpdate}
         />

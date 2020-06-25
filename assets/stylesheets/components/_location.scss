@@ -5,11 +5,20 @@
   background-position: center;
   align-content: space-between;
   display: grid;
+  border-radius: 10px 0px 0px 10px;
 }
 
 .title {
   padding: 5px 20px;
   text-align: right;
+
+  h2 {
+    text-shadow: 3px 3px rgba(50, 50, 70, 0.5);
+  }
+
+  p {
+    text-shadow: 2px 2px rgba(50, 50, 70, 0.5);
+  }
 }
 
 .date-time {
@@ -17,6 +26,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 5px 20px;
+  text-shadow: 2px 2px rgba(50, 50, 70, 0.5);
 }
 
 .day {
@@ -36,4 +46,5 @@
 .temperature {
   font-size: 4em;
   font-weight: lighter;
+  text-shadow: 3px 3px rgba(50, 50, 70, 0.5);
 }

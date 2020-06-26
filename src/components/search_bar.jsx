@@ -13,6 +13,7 @@ class SearchBar extends Component {
         className="search-bar"
         placeholder="Search any city"
         onChange={this.handleUpdate}
+        value={query}
         />
     );
   };

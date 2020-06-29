@@ -120,6 +120,7 @@ class Weather extends Component {
   //   //   default:
   //   //     this.setState({ icon: "CLEAR_DAY" });
   //   // }
+      console.log('we are in the getWeather function. Weather Component');
       console.log(data);
     })
   };

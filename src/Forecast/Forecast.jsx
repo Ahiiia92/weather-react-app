@@ -16,8 +16,11 @@ class Forecast extends Component {
   };
 
  search = (query) => {
-   const url = `${apiKeys.base}weather?q=Berlin&units=metric&APPID=${apiKeys.key}`;
+   console.log('Wea re in the search function');
+   const url = `${apiKeys.base}weather?q=${query}&units=metric&APPID=${apiKeys.key}`;
+   console.log('url of the api call');
    console.log(url);
+   console.log('Query should be display');
    console.log(query);
       fetch(url)
       .then(response => response.json())
@@ -39,6 +42,7 @@ class Forecast extends Component {
             wind: result.wind.speed
           }
         })
+        console.log('Result of the api call');
         console.log(result);
         console.log(result.main.temp);
       })
@@ -57,9 +61,11 @@ class Forecast extends Component {
   }
 
   handleSubmit(event) {
-    console.log('typed enter');
-    this.search();
+    console.log('HandleSubmit Function');
+    console.log('typed enter key');
+    this.search(this.state.query);
     event.preventDefault();
+    console.log('Back to the handleSubmit Function');
     console.log('ran handleSubmit properly');
   }
   // const defaults = {

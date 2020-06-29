@@ -8,5 +8,15 @@
 @media all and (max-width: 992px) and (min-width: 520px) {
   .container {
     display: block;
+    width: 80%;
+    height: auto;
+  }
+}
+
+@media all and (max-width: 520px) and (min-width: 320px) {
+  .container {
+    display: block;
+    width: 90%;
+    height: auto;
   }
 }

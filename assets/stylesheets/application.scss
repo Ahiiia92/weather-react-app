@@ -46,12 +46,22 @@ h3 {
   font-size: 2.5rem;
 }
 
-@media all and (max-width: 992px) and (min-width: 520px) {
+@media all and (max-width: 992px) and (min-width: 320px) {
   h2 {
     font-size: 3em;
   }
 
   h3 {
     font-size: 1em;
+  }
+}
+
+@media all and (max-width: 992px) and (min-width: 520px) {
+  h2 {
+    font-size: 2.5em;
+  }
+
+  h3 {
+    font-size: 0.75em;
   }
 }

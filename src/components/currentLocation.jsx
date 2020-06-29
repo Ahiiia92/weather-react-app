@@ -29,9 +29,9 @@ class Weather extends Component {
         country: "CA",
         humidity: undefined,
         description: undefined,
-        icon: "CLEAR_DAY",
+        icon: "CLOUDY",
         sunrise: undefined,
-        senset: undefined,
+        sunset: undefined,
         errorMsg: undefined
       };
   }
@@ -45,20 +45,16 @@ class Weather extends Component {
       this.getPosition()
       // if user allow location then it will fetch the location data and send it to getWeather function
       .then((position) => {
-        // this.getWeather(position.coords.latitude, position.coords.longitude);
-        this.getWeather({
-          lat: position.coords.latitude,
-          lon: position.coords.longitude
-        });
+        this.getWeather(position.coords.latitude, position.coords.longitude);
         console.log(position);
         })
       .catch((error) => {
         // if user didn't allow geolocation services then default one
-        // this.getWeather(28.67, 77.22);
-        this.setState({
-          lat: 28.67,
-          lon: 77.22
-        });
+        this.getWeather(28.67, 77.22);
+        // this.setState({
+        //   lat: 28.67,
+        //   lon: 77.22
+        // });
         console.log(error);
         alert(
           "You have disabled location service."
@@ -81,7 +77,7 @@ class Weather extends Component {
   };
 
   getWeather = (lat, lon) => {
-    const url_coor = `${apiKeys.base}weather?lat=52.52&lon=13.41&units=metric&APPID=${apiKeys.key}`;
+    const url_coor = `${apiKeys.base}weather?lat=${lat}&lon=${lon}&units=metric&APPID=${apiKeys.key}`;
     console.log(url_coor);
     // const api_call = await fetch(url_coor);
     // const data = await api_call.json();

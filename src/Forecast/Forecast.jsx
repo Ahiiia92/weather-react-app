@@ -11,11 +11,14 @@ class Forecast extends Component {
       error: "",
       weather: {}
     }
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   };
 
  search = (query) => {
-   const url = `${apiKeys.base}weather?q=Berlin&units=metric&APPID=${apiKeys.key}`
-   console.log(url)
+   const url = `${apiKeys.base}weather?q=Berlin&units=metric&APPID=${apiKeys.key}`;
+   console.log(url);
+   console.log(query);
       fetch(url)
       .then(response => response.json())
       .then((result) => {
@@ -49,6 +52,16 @@ class Forecast extends Component {
       });
   };
 
+  handleChange(event) {
+    this.setState({ query: event.target.value });
+  }
+
+  handleSubmit(event) {
+    console.log('typed enter');
+    this.search();
+    event.preventDefault();
+    console.log('ran handleSubmit properly');
+  }
   // const defaults = {
   //   icon: 'CLEAR_DAY',
   //   color: 'goldenrod',
@@ -71,14 +84,16 @@ render() {
       <div className="today-weather">
         <h3 className="weather">{this.state.weather.city} - {this.state.weather.country}</h3>
         <div className="search-box">
-          <input
-            type="text"
-            className="search-bar"
-            placeholder="Search any city"
-            onChange={(event) => this.setState({query: event.target.value})}
-            // value={query}
-            onKeyPress={this.search}
-          />
+          <form onSubmit={this.handleSubmit}>
+            <input
+              type="text"
+              className="search-bar"
+              placeholder="Search any city"
+              onChange={this.handleChange}
+              value={this.state.query}
+            />
+            <input type="submit" value="Submit" />
+        </form>
         </div>
         <ul className="forecast-results">
           {/* {(typeof weather.main != "undefined") ? ( */}

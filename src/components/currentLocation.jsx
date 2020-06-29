@@ -3,7 +3,6 @@ import apiKeys from '../apiKeys';
 import Clock from 'react-live-clock';
 import Forecast from '../Forecast/Forecast';
 // import loader from '../../assets/Spinner-1s-200px.gif';
-console.log('hey there');
 
 const dateBuilder = (d) => {
   const days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
@@ -25,11 +24,11 @@ class Weather extends Component {
         lon: undefined,
         errorMessage: undefined,
         temperatureC: undefined,
-        city: "Vancouver",
-        country: "CA",
+        city: undefined,
+        country: undefined,
         humidity: undefined,
         description: undefined,
-        icon: "CLOUDY",
+        icon: undefined,
         sunrise: undefined,
         sunset: undefined,
         errorMsg: undefined
@@ -46,16 +45,12 @@ class Weather extends Component {
       // if user allow location then it will fetch the location data and send it to getWeather function
       .then((position) => {
         this.getWeather(position.coords.latitude, position.coords.longitude);
-        console.log(position);
+        // console.log(position);
         })
       .catch((error) => {
         // if user didn't allow geolocation services then default one
         this.getWeather(28.67, 77.22);
-        // this.setState({
-        //   lat: 28.67,
-        //   lon: 77.22
-        // });
-        console.log(error);
+        // console.log(error);
         alert(
           "You have disabled location service."
           );
@@ -78,9 +73,7 @@ class Weather extends Component {
 
   getWeather = (lat, lon) => {
     const url_coor = `${apiKeys.base}weather?lat=${lat}&lon=${lon}&units=metric&APPID=${apiKeys.key}`;
-    console.log(url_coor);
-    // const api_call = await fetch(url_coor);
-    // const data = await api_call.json();
+    // console.log(url_coor);
     fetch(url_coor)
     .then(response => response.json())
     .then((data) => {

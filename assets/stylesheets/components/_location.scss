@@ -8,54 +8,56 @@
 }
 
 .app-warm {
-  background-image: linear-gradient(rgba(0, 0, 0, 0.08), rgba(0, 0, 0, 0.35)), url("https://images.unsplash.com/photo-1592300254375-9cb152e00e57?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1962&q=80");
+  background-image: linear-gradient(rgba(0, 0, 0, 0.08), rgba(0, 0, 0, 0.35)), url("https://images.pexels.com/photos/1366919/pexels-photo-1366919.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
   background-size: cover;
 }
 
 .app {
-  background-color: linear-gradient(rgba(0, 0, 0, 0.08), rgba(0, 0, 0, 0.35)), url('https://images.pexels.com/photos/127577/nature-stars-night-galaxy-127577.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260');
-      transition: 0.4 ease-out;
-      background-position: bottom;
-      background-size: cover;
-  }
+  background-image: linear-gradient(rgba(0, 0, 0, 0.08), rgba(0, 0, 0, 0.35)), url("https://images.pexels.com/photos/127577/nature-stars-night-galaxy-127577.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260");
+  transition: 0.4 ease-out;
+  background-position: bottom;
+  background-size: cover;
+}
 
-  .title {
-    padding: 5px 20px;
-    text-align: right;
+// https://images.pexels.com/photos/127577/nature-stars-night-galaxy-127577.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260
 
-    h2 {
-      text-shadow: 3px 3px rgba(50, 50, 70, 0.5);
-    }
+.title {
+  padding: 5px 20px;
+  text-align: right;
 
-    p {
-      text-shadow: 2px 2px rgba(50, 50, 70, 0.5);
-    }
-  }
-
-  .date-time {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 5px 20px;
-    text-shadow: 2px 2px rgba(50, 50, 70, 0.5);
-  }
-
-  .day {
-    .date {
-      font-weight: lighter;
-      padding-bottom: 5px;
-      font-size: 1.5em;
-    }
-
-    .time {
-      font-weight: lighter;
-      padding-bottom: 5px;
-      font-size: 1.5em;
-    }
-  }
-
-  .temperature {
-    font-size: 4em;
-    font-weight: lighter;
+  h2 {
     text-shadow: 3px 3px rgba(50, 50, 70, 0.5);
   }
+
+  p {
+    text-shadow: 2px 2px rgba(50, 50, 70, 0.5);
+  }
+}
+
+.date-time {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 20px;
+  text-shadow: 2px 2px rgba(50, 50, 70, 0.5);
+}
+
+.day {
+  .date {
+    font-weight: lighter;
+    padding-bottom: 5px;
+    font-size: 1.5em;
+  }
+
+  .time {
+    font-weight: lighter;
+    padding-bottom: 5px;
+    font-size: 1.5em;
+  }
+}
+
+.temperature {
+  font-size: 4em;
+  font-weight: lighter;
+  text-shadow: 3px 3px rgba(50, 50, 70, 0.5);
+}

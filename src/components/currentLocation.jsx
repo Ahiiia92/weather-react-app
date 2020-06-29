@@ -45,11 +45,21 @@ class Weather extends Component {
       this.getPosition()
       // if user allow location then it will fetch the location data and send it to getWeather function
       .then((position) => {
-        this.getWeather(position.coords.latitude, position.coords.longitude);
+        // this.getWeather(position.coords.latitude, position.coords.longitude);
+        this.getWeather({
+          lat: position.coords.latitude,
+          lon: position.coords.longitude
+        });
+        console.log(position);
         })
       .catch((error) => {
         // if user didn't allow geolocation services then default one
-        this.getWeather(28.67, 77.22);
+        // this.getWeather(28.67, 77.22);
+        this.setState({
+          lat: 28.67,
+          lon: 77.22
+        });
+        console.log(error);
         alert(
           "You have disabled location service."
           );
@@ -70,21 +80,26 @@ class Weather extends Component {
     });
   };
 
-  // getWeather = async (lat, lon) => {
-    // const api_call = await fetch(`${apiKeys.base}weather?lat=${lat}&lon=${lon}&units=metric&APPID=${apiKeys.key}`);
+  getWeather = (lat, lon) => {
+    const url_coor = `${apiKeys.base}weather?lat=52.52&lon=13.41&units=metric&APPID=${apiKeys.key}`;
+    console.log(url_coor);
+    // const api_call = await fetch(url_coor);
     // const data = await api_call.json();
-    // this.setState({
-    //   lat: lat,
-    //   lon: lon,
-    //   city: data.name,
-    //   icon: "CLEAR_DAY",
-    //   temperatureC: Math.round(data.main.temp),
-    //   humidity: data.main.humidity,
-    //   main: data.weather[0].main,
-    //   country: data.sys.country,
-    //   sunrise: data.sys.sunrise,
-    //   sunset: data.sys.sunset
-    // });
+    fetch(url_coor)
+    .then(response => response.json())
+    .then((data) => {
+      this.setState({
+        lat: lat,
+        lon: lon,
+        city: data.name,
+        icon: "CLEAR_DAY",
+        temperatureC: Math.round(data.main.temp),
+        humidity: data.main.humidity,
+        main: data.weather[0].main,
+        country: data.sys.country,
+        sunrise: data.sys.sunrise,
+        sunset: data.sys.sunset
+      })
   //   // switch (this.state.main) {
   //   //   case "Haze":
   //   //     this.setState({ icon: "CLEAR_DAY" });
@@ -116,7 +131,9 @@ class Weather extends Component {
   //   //   default:
   //   //     this.setState({ icon: "CLEAR_DAY" });
   //   // }
-  // };
+      console.log(data);
+    })
+  };
 
   render() {
     return (

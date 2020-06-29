@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import apiKeys from '../apiKeys';
-import ReactAnimatedWeather from 'react-animated-weather';
+// import ReactAnimatedWeather from 'react-animated-weather';
 
 class Forecast extends Component {
   constructor(props) {
@@ -50,9 +50,10 @@ class Forecast extends Component {
   };
 
   // const defaults = {
-  //   color: "white",
-  //   size: 112,
-  //   animate: true,
+  //   icon: 'CLEAR_DAY',
+  //   color: 'goldenrod',
+  //   size: 512,
+  //   animate: true
   // };
 
 render() {
@@ -60,7 +61,7 @@ render() {
     <div id="forecast">
       <div className="forecast-icon">
         {/* <ReactAnimatedWeather
-          // icon={props.icon}
+          icon={defaults.icon}
           color={defaults.color}
           size={defaults.size}
           animate={defaults.animate}

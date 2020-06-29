@@ -1,7 +1,11 @@
+// External Libraries
 import React, { Component } from 'react';
-import axios from 'axios';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
+// Internal Libraries
 import apiKeys from '../apiKeys';
 // import ReactAnimatedWeather from 'react-animated-weather';
+import '../fontawesome';
 
 class Forecast extends Component {
   constructor(props) {
@@ -75,6 +79,19 @@ class Forecast extends Component {
   //   animate: true
   // };
 
+  renderIcon = () => {
+    switch(this.btnText) {
+      case 'Submit': return (
+        <FontAwesomeIcon
+          icon={['fas', 'search-location']}
+          style={{
+            fontSize: '2em'
+          }}
+        />
+      );
+    }
+  }
+
 render() {
   return (
     <div id="forecast">
@@ -98,7 +115,17 @@ render() {
               onChange={this.handleChange}
               value={this.state.query}
             />
-            <input type="submit" value="Submit" />
+            <button
+              type="submit"
+              value="Submit"
+            >
+              <FontAwesomeIcon
+                icon={['fas', 'search-location']}
+                style={{
+                  fontSize: '2em'
+                }}
+              />
+            </button>
         </form>
         </div>
         <ul className="forecast-results">

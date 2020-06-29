@@ -4,3 +4,9 @@
   width: 60%;
   display: flex;
 }
+
+@media all and (max-width: 992px) and (min-width: 520px) {
+  .container {
+    display: block;
+  }
+}

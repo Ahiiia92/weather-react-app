@@ -61,3 +61,28 @@
   font-weight: lighter;
   text-shadow: 3px 3px rgba(50, 50, 70, 0.5);
 }
+
+@media all and (max-width: 992px) and (min-width: 520px) {
+  #location {
+    height: auto;
+    width: auto;
+    border-radius: 10px 10px 0px 0px;
+    padding: 20px 15px;
+  }
+
+  .day {
+    .date {
+      font-size: 1em;
+    }
+  }
+
+  .day {
+    .time {
+      font-size: 1em;
+    }
+  }
+
+  .temperature {
+    font-size: 2em;
+  }
+}

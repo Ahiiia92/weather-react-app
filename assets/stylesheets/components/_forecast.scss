@@ -88,3 +88,18 @@ form {
   font-style: italic;
   font-weight: 100;
 }
+
+@media all and (max-width: 992px) and (min-width: 520px) {
+  .today-weather .weather {
+    font-size: 1.5em
+  }
+
+  #forecast {
+    width: auto;
+    border-radius: 0 0px 10px 10px;
+    padding-top: 80px;
+  }
+  .search-box {
+    margin: 10px auto;
+  }
+}

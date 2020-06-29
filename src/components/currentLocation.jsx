@@ -131,10 +131,13 @@ class Weather extends Component {
     })
   };
 
+  current() {new Date().getHours()};
+
+
   render() {
     return (
       <React.Fragment>
-        <div id="location" className={((this.state.temperatureC > 16) ? 'app-warm' : 'app')}>
+        <div id="location" className={((new Date().getHours()) >= 6 && (new Date().getHours()) <= 19) ? 'app-warm' : 'app'}>
           <div className="title">
             <h2>{this.state.city}</h2>
             <p>{this.state.country}</p>

@@ -7,36 +7,47 @@ class Forecast extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      query: "Berlin",
+      query: "",
       error: "",
       weather: {}
     }
   };
 
-  // console.log("Hello from Forecast");
-
  search = (query) => {
-      fetch(`${apiKeys.base}weather?q=Berlin&units=metric&APPID=${apiKeys.key}`)
+   const url = `${apiKeys.base}weather?q=Berlin&units=metric&APPID=${apiKeys.key}`
+   console.log(url)
+      fetch(url)
       .then(response => response.json())
       .then((result) => {
-        // setQuery('');
-        // setWeather(result.data);
+        this.setState({
+          query: "",
+          weather: {
+            lat: result.coord.lat,
+            lon: result.coord.lon,
+            errorMessage: undefined,
+            temperatureC: result.main.temp,
+            city: result.name,
+            country: result.sys.country,
+            humidity: result.main.humidity,
+            description: result.weather.main,
+            icon: "CLEAR_DAY",
+            sunrise: result.sys.sunrise,
+            sunset: result.sys.sunset,
+            wind: result.wind.speed
+          }
+        })
         console.log(result);
+        console.log(result.main.temp);
       })
       .catch((error) => {
         console.log(error);
-        // setWeather('');
-        // setQuery('');
-        // setError({ message: "Not Found", query: query });
+        this.setState({
+          query: '',
+          weather: '',
+          error: "Not Found"
+        })
       });
   };
-
-  // handleSearch = () => {
-  //   this.setState({
-  //     query: "coucou",
-  //   })
-  // }
-
 
   // const defaults = {
   //   color: "white",
@@ -44,9 +55,6 @@ class Forecast extends Component {
   //   animate: true,
   // };
 
-  // useEffect(() => {
-  //   search("Delhi");
-  // }, []);
 render() {
   return (
     <div id="forecast">
@@ -57,10 +65,10 @@ render() {
           size={defaults.size}
           animate={defaults.animate}
         /> */}
-        {/* <p>{props.main}</p> */}
+        <p>{this.state.weather.main}</p>
       </div>
       <div className="today-weather">
-        <h3 className="weather">{this.props.weather}</h3>
+        <h3 className="weather">{this.state.weather.city} - {this.state.weather.country}</h3>
         <div className="search-box">
           <input
             type="text"
@@ -75,10 +83,11 @@ render() {
           {/* {(typeof weather.main != "undefined") ? ( */}
             <div>
             {" "}
-              <li>Temperature{" "} - 25°C (blabla)</li>
-              <li>Humidity{" "} - 30%</li>
-              <li>Visibility{" "} - 1 mi</li>
-              <li>Wind Speed{" "} - 2 Km/h</li>
+            <li>Temperature{" "} - {this.state.weather.temperatureC}°C</li>
+            <li>Humidity{" "} - {this.state.weather.humidity}%</li>
+            <li>Wind Speed{" "} - {this.state.weather.wind} Km/h</li>
+            <li>Sunrise{" "} - {this.state.weather.sunrise}</li>
+            <li>Sunset{" "} - {this.state.weather.sunset}</li>
             </div>
           {/* ) : (
             <li>

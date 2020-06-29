@@ -1,6 +1,7 @@
 @import './components/cards';
 @import './components/forecast';
 @import './components/location';
+@import './components/clock';
 
 // colors variables:
 $dark-purple: #3b1c32;
@@ -9,7 +10,7 @@ $deep-champagne: #FFCF9C;
 $white: white;
 
 body {
-  font-family: Helvetica;
+  font-family: "Helvetica Neue", "Helvetica", "Arial", "sans-serif";
   // background-image: url('https://images.unsplash.com/photo-1470770841072-f978cf4d019e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2400&q=142');
   background-repeat: no-repeat;
   background-position: center;
@@ -32,4 +33,16 @@ main {
 
 input {
   color: black !important;
+}
+
+h2 {
+  font-weight: 200;
+  font-size: 5rem;
+  font-family: "Helvetica Neue", "Helvetica", "Arial", "sans-serif";
+}
+
+h3 {
+  font-weight: 100;
+  font-family: "Helvetica Neue", "Helvetica", "Arial", "sans-serif";
+  font-size: 2.5rem;
 }

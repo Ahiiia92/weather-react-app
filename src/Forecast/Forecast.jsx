@@ -2,10 +2,11 @@
 import React, { Component } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
+
 // Internal Libraries
 import apiKeys from '../apiKeys';
-// import ReactAnimatedWeather from 'react-animated-weather';
 import '../fontawesome';
+import Icons from './Icons';
 
 class Forecast extends Component {
   constructor(props) {
@@ -13,7 +14,16 @@ class Forecast extends Component {
     this.state = {
       query: "",
       error: "",
-      weather: {}
+      weather: {
+        temperatureC: "-",
+        city: "",
+        country: "",
+        humidity: "-",
+        icon: "CLEAR_DAY",
+        sunrise: "-",
+        sunset: "-",
+        wind: "-",
+      }
     }
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -39,7 +49,8 @@ class Forecast extends Component {
             city: result.name,
             country: result.sys.country,
             humidity: result.main.humidity,
-            description: result.weather.main,
+            description: result.weather[0].description,
+            main: result.weather[0].main,
             icon: "CLEAR_DAY",
             sunrise: result.sys.sunrise,
             sunset: result.sys.sunset,
@@ -72,40 +83,26 @@ class Forecast extends Component {
     console.log('Back to the handleSubmit Function');
     console.log('ran handleSubmit properly');
   }
-  // const defaults = {
-  //   icon: 'CLEAR_DAY',
-  //   color: 'goldenrod',
-  //   size: 512,
-  //   animate: true
-  // };
 
-  renderIcon = () => {
-    switch(this.btnText) {
-      case 'Submit': return (
-        <FontAwesomeIcon
-          icon={['fas', 'search-location']}
-          style={{
-            fontSize: '2em'
-          }}
-        />
-      );
-    }
+  timeConvertor = (num) => {
+    const date = new Date(num * 1000);
+    const hours = date.getHours();
+    const minutes = "0" + date.getMinutes();
+    const secondes = "0" + date.getSeconds();
+
+    const formattedTime = hours + ":" + minutes.substr(-2) + ":" + secondes.substr(-2);
+    return formattedTime;
   }
 
 render() {
   return (
     <div id="forecast">
       <div className="forecast-icon">
-        {/* <ReactAnimatedWeather
-          icon={defaults.icon}
-          color={defaults.color}
-          size={defaults.size}
-          animate={defaults.animate}
-        /> */}
-        <p>{this.state.weather.main}</p>
+      {/* <Icons /> */}
       </div>
       <div className="today-weather">
-        <h3 className="weather">{this.state.weather.city} - {this.state.weather.country}</h3>
+        <h2 className="weather">{this.state.weather.city} - {this.state.weather.country}</h2>
+        <h3>{this.state.weather.main}</h3>
         <div className="search-box">
           <form onSubmit={this.handleSubmit}>
             <input
@@ -129,14 +126,19 @@ render() {
         </form>
         </div>
         <ul className="forecast-results">
+          <p>{this.state.weather.description}</p>
           {/* {(typeof weather.main != "undefined") ? ( */}
             <div>
             {" "}
-            <li>Temperature{" "} - {this.state.weather.temperatureC}°C</li>
-            <li>Humidity{" "} - {this.state.weather.humidity}%</li>
-            <li>Wind Speed{" "} - {this.state.weather.wind} Km/h</li>
-            <li>Sunrise{" "} - {this.state.weather.sunrise}</li>
-            <li>Sunset{" "} - {this.state.weather.sunset}</li>
+            <li>Temperature{" "}<span>{this.state.weather.temperatureC} °C</span></li>
+            <li>Humidity{" "}<span>{this.state.weather.humidity} %</span></li>
+            <li>Wind Speed{" "}<span>{this.state.weather.wind} Km/h</span></li>
+            <li>Sunrise{" "}
+              <span>{this.timeConvertor(this.state.weather.sunrise)}</span>
+            </li>
+            <li>Sunset{" "}
+              <span>{this.timeConvertor(this.state.weather.sunset)}</span>
+            </li>
             </div>
           {/* ) : (
             <li>

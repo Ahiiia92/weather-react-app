@@ -1,7 +1,10 @@
+// External Libraries
 import React, { Component } from 'react';
+
+// Internal Libraries
 import apiKeys from '../apiKeys';
-import Clock from 'react-live-clock';
 import Forecast from '../Forecast/Forecast';
+import LiveClock from './liveClock';
 // import loader from '../../assets/Spinner-1s-200px.gif';
 
 const dateBuilder = (d) => {
@@ -20,19 +23,19 @@ class Weather extends Component {
   constructor(props) {
     super(props),
     this.state = {
-        lat: undefined,
-        lon: undefined,
-        errorMessage: undefined,
-        temperatureC: undefined,
-        city: undefined,
-        country: undefined,
-        humidity: undefined,
-        description: undefined,
-        icon: undefined,
-        sunrise: undefined,
-        sunset: undefined,
-        errorMsg: undefined
-      };
+      lat: undefined,
+      lon: undefined,
+      errorMessage: undefined,
+      temperatureC: undefined,
+      city: undefined,
+      country: undefined,
+      humidity: undefined,
+      description: undefined,
+      icon: undefined,
+      sunrise: undefined,
+      sunset: undefined,
+      errorMsg: undefined
+    };
   }
 
   componentWillMount() {
@@ -87,7 +90,10 @@ class Weather extends Component {
         main: data.weather[0].main,
         country: data.sys.country,
         sunrise: data.sys.sunrise,
-        sunset: data.sys.sunset
+        sunset: data.sys.sunset,
+        color: 'goldenrod',
+        size: 512,
+        animate: true
       })
   //   // switch (this.state.main) {
   //   //   case "Haze":
@@ -128,7 +134,7 @@ class Weather extends Component {
   render() {
     return (
       <React.Fragment>
-        <div id="location">
+        <div id="location" className={((this.state.temperatureC > 16) ? 'app-warm' : 'app')}>
           <div className="title">
             <h2>{this.state.city}</h2>
             <p>{this.state.country}</p>
@@ -137,9 +143,7 @@ class Weather extends Component {
             <div className="day">
               <div className="date">{dateBuilder(new Date())}</div>
               <div className="time">
-                {/* <Clock
-                  format="HH:mm:ss" interval={1000} ticking={true}
-                /> */}
+                <LiveClock />
               </div>
             </div>
             <div className="temperature">{this.state.temperatureC} °C</div>

@@ -7,7 +7,7 @@ class Forecast extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      query: "",
+      query: "Berlin",
       error: "",
       weather: {}
     }
@@ -15,20 +15,19 @@ class Forecast extends Component {
 
   // console.log("Hello from Forecast");
 
- search = (city) => {
-      fetch(`${apiKeys.base}weather?q=${city}&units=metric&APPID=${apiKeys.key}`)
-   console.log(`${apiKeys.base}weather?q=${city}&units=metric&APPID=${apiKeys.key}`)
+ search = (query) => {
+      fetch(`${apiKeys.base}weather?q=Berlin&units=metric&APPID=${apiKeys.key}`)
       .then(response => response.json())
       .then((result) => {
-        setQuery('');
-        setWeather(result.data);
+        // setQuery('');
+        // setWeather(result.data);
         console.log(result);
       })
       .catch((error) => {
         console.log(error);
-        setWeather('');
-        setQuery('');
-        setError({ message: "Not Found", query: query });
+        // setWeather('');
+        // setQuery('');
+        // setError({ message: "Not Found", query: query });
       });
   };
 

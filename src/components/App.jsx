@@ -1,13 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Weather from './currentLocation';
 
 function App() {
   return (
-    <React.Fragment>
       <div className="container">
         <Weather />
       </div>
-    </React.Fragment>
   );
 };
 

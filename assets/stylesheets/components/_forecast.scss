@@ -8,7 +8,7 @@
   height: 20%;
 }
 
-.today-weather>h3 {
+.today-weather>div>h3 {
   text-align: center;
   text-shadow: 2px 2px rgba(50, 50, 70, 0.5);
 }
@@ -83,7 +83,7 @@ form {
   }
 }
 
-.forecast-results>p {
+.forecast-results>div>p {
   text-align: center;
   font-style: italic;
   font-weight: 100;

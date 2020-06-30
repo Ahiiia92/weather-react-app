@@ -96,58 +96,66 @@ class Forecast extends Component {
 
 render() {
   return (
-    <div id="forecast">
-      <div className="forecast-icon">
-      {/* <Icons /> */}
-      </div>
-      <div className="today-weather">
-        <h2 className="weather">{this.state.weather.city} - {this.state.weather.country}</h2>
-        <h3>{this.state.weather.main}</h3>
-        <div className="search-box">
-          <form onSubmit={this.handleSubmit}>
-            <input
-              type="text"
-              className="search-bar"
-              placeholder="Search any city"
-              onChange={this.handleChange}
-              value={this.state.query}
-            />
-            <button
-              type="submit"
-              value="Submit"
-            >
-              <FontAwesomeIcon
-                icon={['fas', 'search-location']}
-                style={{
-                  fontSize: '2em'
-                }}
-              />
-            </button>
-        </form>
+    <React.Fragment>
+      <div id="forecast">
+        <div className="forecast-icon">
+          {/* <Icons /> */}
         </div>
-        <ul className="forecast-results">
-          <p>{this.state.weather.description}</p>
-          {/* {(typeof weather.main != "undefined") ? ( */}
-            <div>
-            {" "}
-            <li>Temperature{" "}<span>{this.state.weather.temperatureC} °C</span></li>
-            <li>Humidity{" "}<span>{this.state.weather.humidity} %</span></li>
-            <li>Wind Speed{" "}<span>{this.state.weather.wind} Km/h</span></li>
-            <li>Sunrise{" "}
-              <span>{this.timeConvertor(this.state.weather.sunrise)}</span>
-            </li>
-            <li>Sunset{" "}
-              <span>{this.timeConvertor(this.state.weather.sunset)}</span>
-            </li>
-            </div>
-          {/* ) : (
-            <li>
-              {error.query} {error.message}
-            </li>
-          )} */}
-        </ul>
+        <div className="today-weather">
+        {(typeof this.state.weather.description != 'undefined') ? (
+          <div>
+              <h2 className="weather">{this.state.weather.city} - {this.state.weather.country}</h2>
+              <h3>{this.state.weather.main}</h3>
+          </div>
+        ) : (
+          <h2 className="weather">Weather in...</h2>
+        )}
+          <div className="search-box">
+            <form onSubmit={this.handleSubmit}>
+              <input
+                type="text"
+                className="search-bar"
+                placeholder="Search any city"
+                onChange={this.handleChange}
+                value={this.state.query}
+              />
+              <button
+                type="submit"
+                value="Submit"
+              >
+                <FontAwesomeIcon
+                  icon={['fas', 'search-location']}
+                  style={{
+                    fontSize: '2em'
+                  }}
+                />
+              </button>
+            </form>
+          </div>
+          <ul className="forecast-results">
+            {(typeof this.state.weather.description != 'undefined') ? (
+              <div>
+                <p>{this.state.weather.description}</p>
+                <div>
+                  <li>Temperature{" "}<span>{this.state.weather.temperatureC} °C</span></li>
+                  <li>Humidity{" "}<span>{this.state.weather.humidity} %</span></li>
+                  <li>Wind Speed{" "}<span>{this.state.weather.wind} Km/h</span></li>
+                  <li>Sunrise{" "}
+                    <span>{this.timeConvertor(this.state.weather.sunrise)}</span>
+                  </li>
+                  <li>Sunset{" "}
+                    <span>{this.timeConvertor(this.state.weather.sunset)}</span>
+                  </li>
+                </div>
+              </div>
+        ) : (
+                <p> </p>
+              )}
+          </ul>
+        </div>
       </div>
-    </div>
+    </React.Fragment>
+
   )};
 };
 

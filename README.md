@@ -9,4 +9,5 @@ The aim is to be able to use user's geolocation to display its current location 
 - React, ReactDOM
 - Webpack 4
 - Babel with es2015 and react presets
-- Bootstrap (css only, loaded from a cdn in `index.html`)
+- Api - OpenWeather
+- Fontawesome

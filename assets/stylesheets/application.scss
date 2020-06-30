@@ -46,7 +46,7 @@ h3 {
   font-size: 2.5rem;
 }
 
-@media all and (max-width: 992px) and (min-width: 320px) {
+@media all and (max-width: 992px) and (min-width: 520px) {
   h2 {
     font-size: 3em;
   }
@@ -56,7 +56,7 @@ h3 {
   }
 }
 
-@media all and (max-width: 992px) and (min-width: 520px) {
+@media all and (max-width: 520px) and (min-width: 320px) {
   body {
     background: none;
   }

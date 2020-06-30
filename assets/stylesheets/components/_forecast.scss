@@ -99,7 +99,14 @@ form {
     border-radius: 0 0px 10px 10px;
     padding-top: 80px;
   }
+
   .search-box {
     margin: 10px auto;
+  }
+}
+
+@media all and (max-width: 520px) and (min-width: 320px) {
+  #forecast {
+    padding-top: 40px;
   }
 }

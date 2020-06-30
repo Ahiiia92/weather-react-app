@@ -62,7 +62,7 @@
 
 @media all and (max-width: 992px) and (min-width: 320px) {
   #location {
-    height: auto;
+    height: 70vh;
     width: auto;
     border-radius: 10px 10px 0px 0px;
     padding: 20px 15px;
@@ -82,5 +82,11 @@
 
   .temperature {
     font-size: 2em;
+  }
+}
+
+@media all and (max-width: 520px) and (min-width: 320px) {
+  #location {
+    border-radius: 0;
   }
 }

@@ -1,10 +1,12 @@
 // External Libraries
 import React, { Component } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 // Internal Libraries
 import apiKeys from '../apiKeys';
 import Forecast from '../Forecast/Forecast';
 import LiveClock from './liveClock';
+import '../fontawesome';
 // import loader from '../../assets/Spinner-1s-200px.gif';
 
 const dateBuilder = (d) => {
@@ -76,7 +78,7 @@ class Weather extends Component {
 
   getWeather = (lat, lon) => {
     const url_coor = `${apiKeys.base}weather?lat=${lat}&lon=${lon}&units=metric&APPID=${apiKeys.key}`;
-    // console.log(url_coor);
+    console.log(url_coor);
     fetch(url_coor)
     .then(response => response.json())
     .then((data) => {
@@ -88,9 +90,11 @@ class Weather extends Component {
         temperatureC: Math.round(data.main.temp),
         humidity: data.main.humidity,
         main: data.weather[0].main,
+        description: data.weather[0].description,
         country: data.sys.country,
         sunrise: data.sys.sunrise,
         sunset: data.sys.sunset,
+        wind: data.wind.speed,
         color: 'goldenrod',
         size: 512,
         animate: true
@@ -131,7 +135,15 @@ class Weather extends Component {
     })
   };
 
-  current() {new Date().getHours()};
+  timeConvertor = (num) => {
+    const date = new Date(num * 1000);
+    const hours = date.getHours();
+    const minutes = "0" + date.getMinutes();
+    const secondes = "0" + date.getSeconds();
+
+    const formattedTime = hours + "h" + minutes.substr(-2);
+    return formattedTime;
+  }
 
 
   render() {
@@ -141,7 +153,27 @@ class Weather extends Component {
           <div className="title">
             <h2>{this.state.city}</h2>
             <p>{this.state.country}</p>
+            <p>{this.state.main}</p>
+            <p>{this.state.description}</p>
           </div>
+          <table className="data">
+            <thead>
+              <tr>
+                <th><FontAwesomeIcon icon={['fas', 'sun']}  style={{ fontSize: '2em'}}/></th>
+                <th><FontAwesomeIcon icon={['fas', 'moon']} style={{ fontSize: '2em' }} /></th>
+                <th><FontAwesomeIcon icon={['fas', 'water']} style={{ fontSize: '2em' }} /></th>
+                <th><FontAwesomeIcon icon={['fas', 'wind']} style={{ fontSize: '2em' }} /></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>{this.timeConvertor(this.state.sunrise)}</td>
+                <td>{this.timeConvertor(this.state.sunset)}</td>
+                <td>{this.state.humidity} %</td>
+                <td>{this.state.wind} km/h</td>
+              </tr>
+            </tbody>
+          </table>
           <div className="date-time">
             <div className="day">
               <div className="date">{dateBuilder(new Date())}</div>

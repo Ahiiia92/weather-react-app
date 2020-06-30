@@ -90,7 +90,7 @@ class Forecast extends Component {
     const minutes = "0" + date.getMinutes();
     const secondes = "0" + date.getSeconds();
 
-    const formattedTime = hours + ":" + minutes.substr(-2) + ":" + secondes.substr(-2);
+    const formattedTime = hours + ":" + minutes.substr(-2);
     return formattedTime;
   }
 

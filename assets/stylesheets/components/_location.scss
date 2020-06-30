@@ -32,6 +32,19 @@
   }
 }
 
+.data {
+  margin: auto;
+  border-collapse: collapse;
+
+  th {
+    text-align: center;
+  }
+
+  td {
+    padding: 15px;
+  }
+}
+
 .date-time {
   display: flex;
   justify-content: space-between;

@@ -132,4 +132,14 @@
       text-shadow: 1px 1px rgba(50, 50, 70, 0.5);
     }
   }
+
+  .day {
+    .date {
+      font-weight: normal;
+    }
+
+    .time {
+      font-weight: normal;
+    }
+  }
 }

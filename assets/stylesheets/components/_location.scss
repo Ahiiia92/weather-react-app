@@ -38,10 +38,12 @@
 
   th {
     text-align: center;
+    text-shadow: 3px 3px rgba(50, 50, 70, 0.5);
   }
 
   td {
     padding: 15px;
+    text-shadow: 2px 2px rgba(50, 50, 70, 0.5);
   }
 }
 
@@ -101,5 +103,33 @@
 @media all and (max-width: 520px) and (min-width: 320px) {
   #location {
     border-radius: 0;
+  }
+
+  .date-time {
+    text-shadow: 1px 1px rgba(50, 50, 70, 0.5);
+  }
+
+  .temperature {
+    text-shadow: 2px 2px rgba(50, 50, 70, 0.5);
+  }
+
+  .title {
+    h2 {
+      text-shadow: 2px 2px rgba(50, 50, 70, 0.5);
+    }
+
+    p {
+      text-shadow: 1px 1px rgba(50, 50, 70, 0.5);
+    }
+  }
+
+  .data {
+    th {
+      text-shadow: 2px 2px rgba(50, 50, 70, 0.5);
+    }
+
+    td {
+      text-shadow: 1px 1px rgba(50, 50, 70, 0.5);
+    }
   }
 }

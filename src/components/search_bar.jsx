@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 
 class SearchBar extends Component {
-
   handleUpdate = (event) => {
     this.props.searchFunction(event.target.value);
   }
@@ -14,9 +13,9 @@ class SearchBar extends Component {
         placeholder="Search any city"
         onChange={this.handleUpdate}
         value={query}
-        />
+      />
     );
-  };
+  }
 }
 
 export default SearchBar;

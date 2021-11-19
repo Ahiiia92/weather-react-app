@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 class LiveClock extends Component {
   constructor(props) {
     super(props);
-    this.state = {date: new Date()};
+    this.state = { date: new Date() };
   }
 
   componentDidMount() {
@@ -29,8 +29,8 @@ class LiveClock extends Component {
       <div>
         {this.state.date.toLocaleTimeString()}
       </div>
-      );
-  };
+    );
+  }
 }
 
 ReactDOM.render(

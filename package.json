@@ -1,5 +1,7 @@
 {
   "license": "UNLICENSED",
+  "name": "my-weather-app",
+  "version": "1.1.0",
   "devDependencies": {
     "@babel/cli": "^7.1.5",
     "@babel/core": "^7.1.6",
@@ -30,6 +32,7 @@
     "@fortawesome/fontawesome-svg-core": "^1.2.29",
     "@fortawesome/free-solid-svg-icons": "^5.13.1",
     "@fortawesome/react-fontawesome": "^0.1.11",
+    "auto-changelog": "^2.3.0",
     "react": "16.2",
     "react-animated-weather": "^4.0.1",
     "react-dom": "16.2",
@@ -39,6 +42,13 @@
   "scripts": {
     "start": "webpack-dev-server --mode development",
     "lint": "eslint './src/**/*.js*'",
-    "deploy": "webpack -p && gh-pages -d dist"
+    "deploy": "webpack -p && gh-pages -d dist",
+    "version": "auto-changelog -p && git add CHANGELOG.md"
+  },
+  "auto-changelog": {
+    "output": "CHANGELOG.md",
+    "template": "keepachangelog",
+    "unreleased": true,
+    "commitLimit": false
   }
 }

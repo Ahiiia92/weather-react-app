@@ -2,7 +2,9 @@
 import { library } from '@fortawesome/fontawesome-svg-core';
 
 // import your icons
-import { faSearchLocation, faWater, faWind, faMoon, faSun } from "@fortawesome/free-solid-svg-icons";
+import {
+  faSearchLocation, faWater, faWind, faMoon, faSun
+} from "@fortawesome/free-solid-svg-icons";
 
 library.add(
   faSearchLocation,

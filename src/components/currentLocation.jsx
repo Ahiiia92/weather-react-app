@@ -48,18 +48,18 @@ class Weather extends Component {
     if (navigator.geolocation) {
       this.getPosition()
       // if user allow location then it will fetch the location data and send it to getWeather function
-      .then((position) => {
-        this.getWeather(position.coords.latitude, position.coords.longitude);
+        .then((position) => {
+          this.getWeather(position.coords.latitude, position.coords.longitude);
         // console.log(position);
         })
-      .catch((error) => {
+        .catch((error) => {
         // if user didn't allow geolocation services then default one
-        this.getWeather(28.67, 77.22);
-        // console.log(error);
-        alert(
-          "You have disabled location service."
+          this.getWeather(28.67, 77.22);
+          // console.log(error);
+          alert(
+            "You have disabled location service."
           );
-      });
+        });
     } else {
       alert("Geolocation not available");
     }
@@ -71,77 +71,77 @@ class Weather extends Component {
   }
 
   getPosition = (options) => {
-    return new Promise(function (resolve, reject) {
+    return new Promise(((resolve, reject) => {
       navigator.geolocation.getCurrentPosition(resolve, reject, options);
-    });
+    }));
   };
 
   getWeather = (lat, lon) => {
     const url_coor = `${apiKeys.base}weather?lat=${lat}&lon=${lon}&units=metric&APPID=${apiKeys.key}`;
     console.log(url_coor);
     fetch(url_coor)
-    .then(response => response.json())
-    .then((data) => {
-      this.setState({
-        lat: lat,
-        lon: lon,
-        city: data.name,
-        icon: "CLEAR_DAY",
-        temperatureC: Math.round(data.main.temp),
-        humidity: data.main.humidity,
-        main: data.weather[0].main,
-        description: data.weather[0].description,
-        country: data.sys.country,
-        sunrise: data.sys.sunrise,
-        sunset: data.sys.sunset,
-        wind: data.wind.speed,
-        color: 'goldenrod',
-        size: 512,
-        animate: true
-      })
-  //   // switch (this.state.main) {
-  //   //   case "Haze":
-  //   //     this.setState({ icon: "CLEAR_DAY" });
-  //   //     break;
-  //   //   case "Clouds":
-  //   //     this.setState({ icon: "CLOUDY" });
-  //   //     break;
-  //   //   case "Rain":
-  //   //     this.setState({ icon: "RAIN" });
-  //   //     break;
-  //   //   case "Snow":
-  //   //     this.setState({ icon: "SNOW" });
-  //   //     break;
-  //   //   case "Dust":
-  //   //     this.setState({ icon: "WIND" });
-  //   //     break;
-  //   //   case "Drizzle":
-  //   //     this.setState({ icon: "SLEET" });
-  //   //     break;
-  //   //   case "Fog":
-  //   //     this.setState({ icon: "FOG" });
-  //   //     break;
-  //   //   case "Smoke":
-  //   //     this.setState({ icon: "FOG" });
-  //   //     break;
-  //   //   case "Tornado":
-  //   //     this.setState({ icon: "WIND" });
-  //   //     break;
-  //   //   default:
-  //   //     this.setState({ icon: "CLEAR_DAY" });
-  //   // }
-      console.log('we are in the getWeather function. Weather Component');
-      console.log(data);
-    })
+      .then(response => response.json())
+      .then((data) => {
+        this.setState({
+          lat,
+          lon,
+          city: data.name,
+          icon: "CLEAR_DAY",
+          temperatureC: Math.round(data.main.temp),
+          humidity: data.main.humidity,
+          main: data.weather[0].main,
+          description: data.weather[0].description,
+          country: data.sys.country,
+          sunrise: data.sys.sunrise,
+          sunset: data.sys.sunset,
+          wind: data.wind.speed,
+          color: 'goldenrod',
+          size: 512,
+          animate: true
+        });
+        //   // switch (this.state.main) {
+        //   //   case "Haze":
+        //   //     this.setState({ icon: "CLEAR_DAY" });
+        //   //     break;
+        //   //   case "Clouds":
+        //   //     this.setState({ icon: "CLOUDY" });
+        //   //     break;
+        //   //   case "Rain":
+        //   //     this.setState({ icon: "RAIN" });
+        //   //     break;
+        //   //   case "Snow":
+        //   //     this.setState({ icon: "SNOW" });
+        //   //     break;
+        //   //   case "Dust":
+        //   //     this.setState({ icon: "WIND" });
+        //   //     break;
+        //   //   case "Drizzle":
+        //   //     this.setState({ icon: "SLEET" });
+        //   //     break;
+        //   //   case "Fog":
+        //   //     this.setState({ icon: "FOG" });
+        //   //     break;
+        //   //   case "Smoke":
+        //   //     this.setState({ icon: "FOG" });
+        //   //     break;
+        //   //   case "Tornado":
+        //   //     this.setState({ icon: "WIND" });
+        //   //     break;
+        //   //   default:
+        //   //     this.setState({ icon: "CLEAR_DAY" });
+        //   // }
+        console.log('we are in the getWeather function. Weather Component');
+        console.log(data);
+      });
   };
 
   timeConvertor = (num) => {
     const date = new Date(num * 1000);
     const hours = date.getHours();
-    const minutes = "0" + date.getMinutes();
-    const secondes = "0" + date.getSeconds();
+    const minutes = `0${date.getMinutes()}`;
+    const secondes = `0${date.getSeconds()}`;
 
-    const formattedTime = hours + "h" + minutes.substr(-2);
+    const formattedTime = `${hours}h${minutes.substr(-2)}`;
     return formattedTime;
   }
 
@@ -159,7 +159,7 @@ class Weather extends Component {
           <table className="data">
             <thead>
               <tr>
-                <th><FontAwesomeIcon icon={['fas', 'sun']}  style={{ fontSize: '2em'}}/></th>
+                <th><FontAwesomeIcon icon={['fas', 'sun']} style={{ fontSize: '2em' }} /></th>
                 <th><FontAwesomeIcon icon={['fas', 'moon']} style={{ fontSize: '2em' }} /></th>
                 <th><FontAwesomeIcon icon={['fas', 'water']} style={{ fontSize: '2em' }} /></th>
                 <th><FontAwesomeIcon icon={['fas', 'wind']} style={{ fontSize: '2em' }} /></th>
@@ -169,8 +169,16 @@ class Weather extends Component {
               <tr>
                 <td>{this.timeConvertor(this.state.sunrise)}</td>
                 <td>{this.timeConvertor(this.state.sunset)}</td>
-                <td>{this.state.humidity} %</td>
-                <td>{this.state.wind} km/h</td>
+                <td>
+                  {this.state.humidity}
+                  {' '}
+%
+                </td>
+                <td>
+                  {this.state.wind}
+                  {' '}
+km/h
+                </td>
               </tr>
             </tbody>
           </table>
@@ -181,13 +189,17 @@ class Weather extends Component {
                 <LiveClock />
               </div>
             </div>
-            <div className="temperature">{this.state.temperatureC} °C</div>
+            <div className="temperature">
+              {this.state.temperatureC}
+              {' '}
+°C
+            </div>
           </div>
         </div>
-       <Forecast />
+        <Forecast />
       </React.Fragment>
-      );
-  };
+    );
+  }
 }
 
 export default Weather;

@@ -3,10 +3,10 @@ import Weather from './currentLocation';
 
 function App() {
   return (
-      <div className="container">
-        <Weather />
-      </div>
+    <div className="container">
+      <Weather />
+    </div>
   );
-};
+}
 
 export default App;

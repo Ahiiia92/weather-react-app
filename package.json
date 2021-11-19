@@ -1,7 +1,7 @@
 {
   "license": "UNLICENSED",
   "name": "my-weather-app",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "devDependencies": {
     "@babel/cli": "^7.1.5",
     "@babel/core": "^7.1.6",

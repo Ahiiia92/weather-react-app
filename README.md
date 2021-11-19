@@ -11,3 +11,6 @@ The aim is to be able to use user's geolocation to display its current location 
 - Babel with es2015 and react presets
 - Api - OpenWeather
 - Fontawesome
+
+## Screenshot
+![App Screenshot](https://github.com/Ahiiia92/weather-react-app/blob/master/assets/stylesheets/images/screenshot.png)
